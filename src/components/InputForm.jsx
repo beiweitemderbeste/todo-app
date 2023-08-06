@@ -3,5 +3,5 @@ export default function InputForm() {
     <>
       <h1>hellow from inputform</h1>
     </>
-  )
+  );
 }
