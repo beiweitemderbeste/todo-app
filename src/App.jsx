@@ -5,7 +5,7 @@ import TodoList from "./components/TodoList";
 function App() {
   return (
     <>
-      <h1>todo app</h1>
+      <h1>React Todo App</h1>
       <InputForm />
       <TodoList />
     </>
