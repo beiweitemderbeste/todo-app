@@ -1,7 +1,13 @@
-export default function TodoList() {
+import { useState } from "react";
+
+export default function TodoList({ todos }) {
   return (
     <>
-      <h1>hellow from todolist</h1>
+      <ul>
+        {todos.map((todo) => (
+          <li key={todo}>{todo}</li>
+        ))}
+      </ul>
     </>
   );
 }
