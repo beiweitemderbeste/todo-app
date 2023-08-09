@@ -28,18 +28,36 @@ export default function InputForm({ todos, setTodos }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={todoItem}
-        onChange={handleChange}
-        placeholder="Enter Something"
-      />
-      <StyledButton type="submit">Add</StyledButton>
+      <FormContainer>
+        <InputField
+          type="text"
+          value={todoItem}
+          onChange={handleChange}
+          placeholder="Enter Something"
+        />
+        <StyledButton type="submit">Add</StyledButton>
+      </FormContainer>
     </form>
   );
 }
 
+const FormContainer = styled.div`
+  display: flex;
+  margin-bottom: 20px;
+`;
+
+const InputField = styled.input`
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+`;
+
 const StyledButton = styled.button`
-  background-color: green;
-  color: white;
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
 `;
