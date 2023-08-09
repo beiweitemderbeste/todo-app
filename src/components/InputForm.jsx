@@ -1,4 +1,6 @@
 import { useState } from "react";
+import styled from "styled-components";
+import { v4 as uuidv4 } from "uuid";
 
 export default function InputForm({ todos, setTodos }) {
   const [todoItem, setTodoItem] = useState("");
@@ -14,7 +16,12 @@ export default function InputForm({ todos, setTodos }) {
 
   const addTodoItem = (todo) => {
     if (todo.trim() !== "") {
-      setTodos([...todos, todo]);
+      const newTodo = {
+        id: uuidv4(),
+        title: todo,
+        status: false,
+      };
+      setTodos([...todos, newTodo]);
       setTodoItem("");
     }
   };
@@ -27,7 +34,12 @@ export default function InputForm({ todos, setTodos }) {
         onChange={handleChange}
         placeholder="Enter Something"
       />
-      <button type="submit">Add</button>
+      <StyledButton type="submit">Add</StyledButton>
     </form>
   );
 }
+
+const StyledButton = styled.button`
+  background-color: green;
+  color: white;
+`;
