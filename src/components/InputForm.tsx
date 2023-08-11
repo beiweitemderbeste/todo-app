@@ -2,21 +2,24 @@ import { useState } from "react";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 
-export default function InputForm({ todos, setTodos }) {
+import { InputFormProps } from "../ts/interfaces/InputForm.interfaces";
+import { TodoItem } from "../ts/interfaces/App.interfaces";
+
+export default function InputForm({ todos, setTodos }: InputFormProps) {
   const [todoItem, setTodoItem] = useState("");
 
-  const handleChange = (event) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTodoItem(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     addTodoItem(todoItem);
   };
 
-  const addTodoItem = (todo) => {
+  const addTodoItem = (todo: string) => {
     if (todo.trim() !== "") {
-      const newTodo = {
+      const newTodo: TodoItem = {
         id: uuidv4(),
         title: todo,
         status: false,

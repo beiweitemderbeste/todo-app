@@ -10,6 +10,7 @@ used technologies:
 - [x] vitejs
 - [x] typescript
 - [x] git
+- [x] styled components
 
 ---
 
