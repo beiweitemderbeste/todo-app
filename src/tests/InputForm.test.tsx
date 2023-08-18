@@ -89,3 +89,22 @@ it("clears input field after adding a todo", () => {
   expect(inputField).toHaveValue("");
 });
 
+it("displays an error message when adding an empty todo", () => {
+  const mockSetTodos = jest.fn();
+  const mockTodos: TodoItem[] = [];
+
+  const inputFormProps: InputFormProps = {
+    todos: mockTodos,
+    setTodos: mockSetTodos,
+  };
+
+  render(<InputForm {...inputFormProps} />);
+  
+  const addButton = screen.getByRole("button");
+
+  // Simulate clicking the button without entering a task
+  fireEvent.click(addButton);
+
+  // Assert that the error message is displayed
+  expect(screen.getByText("Please enter a valid todo.")).toBeInTheDocument();
+});

@@ -7,9 +7,11 @@ import { TodoItem } from "../ts/interfaces/App.interfaces";
 
 export default function InputForm({ todos, setTodos }: InputFormProps) {
   const [todoItem, setTodoItem] = useState("");
+  const [error, setError] = useState("");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTodoItem(event.target.value);
+    setError("");
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -18,7 +20,9 @@ export default function InputForm({ todos, setTodos }: InputFormProps) {
   };
 
   const addTodoItem = (todo: string) => {
-    if (todo.trim() !== "") {
+    if (todo.trim() === "") {
+      setError("Please enter a valid todo.");
+    } else {
       const newTodo: TodoItem = {
         id: uuidv4(),
         title: todo,
@@ -39,6 +43,7 @@ export default function InputForm({ todos, setTodos }: InputFormProps) {
           placeholder="Enter Something"
         />
         <StyledButton type="submit">Add</StyledButton>
+        {error && <span className="error-message">{error}</span>}
       </FormContainer>
     </form>
   );
