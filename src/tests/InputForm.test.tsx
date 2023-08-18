@@ -16,3 +16,4 @@ it("tests if the button is there", () => {
   render(<InputForm {...inputFormProps} />);
   expect(screen.getByRole("button")).toBeInTheDocument();
 });
+
