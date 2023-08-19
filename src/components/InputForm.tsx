@@ -43,7 +43,7 @@ export default function InputForm({ todos, setTodos }: InputFormProps) {
           placeholder="Enter Something"
         />
         <StyledButton type="submit">Add</StyledButton>
-        {error && <span className="error-message">{error}</span>}
+        {error && <ErrorMessage>{error}</ErrorMessage>}
       </FormContainer>
     </form>
   );
@@ -68,4 +68,14 @@ const StyledButton = styled.button`
   border: none;
   border-radius: 0 4px 4px 0;
   cursor: pointer;
+`;
+
+const ErrorMessage = styled.span`
+  color: red;
+  font-size: 14px;
+  margin-top: 8px;
+  display: block;
+  background-color: #ffe0e0;
+  padding: 4px 8px;
+  border-radius: 4px;
 `;
