@@ -4,107 +4,75 @@ import jest from "jest-mock";
 import { InputFormProps } from "../ts/interfaces/InputForm.interfaces";
 import { TodoItem } from "../ts/interfaces/App.interfaces";
 
-it("tests if the input field is in the document", () => {
+describe("InputForm component", () => {
   const mockSetTodos = jest.fn();
   const mockTodos: TodoItem[] = [];
-
   const inputFormProps: InputFormProps = {
     todos: mockTodos,
     setTodos: mockSetTodos,
   };
 
-  render(<InputForm {...inputFormProps} />);
-  expect(screen.getByPlaceholderText("Enter Something")).toBeInTheDocument();
-});
+  it("displays the input field", () => {
+    render(<InputForm {...inputFormProps} />);
+    expect(screen.getByPlaceholderText("Enter Something")).toBeInTheDocument();
+  });
 
-it("tests if the button is in the document", () => {
-  const mockSetTodos = jest.fn();
-  const mockTodos: TodoItem[] = [];
+  it("displays the add button", () => {
+    render(<InputForm {...inputFormProps} />);
+    expect(screen.getByRole("button")).toBeInTheDocument();
+  });
 
-  const inputFormProps: InputFormProps = {
-    todos: mockTodos,
-    setTodos: mockSetTodos,
-  };
+  it("adds a todo with non-empty input", () => {
+    render(<InputForm {...inputFormProps} />);
+    const inputField = screen.getByPlaceholderText("Enter Something");
+    const addButton = screen.getByRole("button");
 
-  render(<InputForm {...inputFormProps} />);
-  expect(screen.getByRole("button")).toBeInTheDocument();
-});
+    fireEvent.change(inputField, { target: { value: "New Task" } });
+    fireEvent.click(addButton);
 
-it("tests adding a todo with empty input", () => {
-  const mockSetTodos = jest.fn();
-  const mockTodos: TodoItem[] = [];
+    expect(mockSetTodos).toHaveBeenCalledWith([
+      ...mockTodos,
+      { id: expect.any(String), title: "New Task", status: false },
+    ]);
+  });
 
-  const inputFormProps: InputFormProps = {
-    todos: mockTodos,
-    setTodos: mockSetTodos,
-  };
+  it("clears input field after adding a todo", () => {
+    render(<InputForm {...inputFormProps} />);
+    const inputField = screen.getByPlaceholderText("Enter Something");
+    const addButton = screen.getByRole("button");
 
-  render(<InputForm {...inputFormProps} />);
-  fireEvent.click(screen.getByRole("button"));
-  expect(mockSetTodos).not.toHaveBeenCalled();
-});
+    fireEvent.change(inputField, { target: { value: "New Task" } });
+    fireEvent.click(addButton);
 
-it("tests adding a todo with non-empty input", () => {
-  const mockSetTodos = jest.fn();
-  const mockTodos: TodoItem[] = [];
+    expect(inputField).toHaveValue("");
+  });
 
-  const inputFormProps: InputFormProps = {
-    todos: mockTodos,
-    setTodos: mockSetTodos,
-  };
+  it("displays an error message for invalid input", () => {
+    render(<InputForm {...inputFormProps} />);
+    const addButton = screen.getByRole("button");
 
-  render(<InputForm {...inputFormProps} />);
-  
-  const inputField = screen.getByPlaceholderText("Enter Something");
-  const addButton = screen.getByRole("button");
+    // Submit an empty todo
+    fireEvent.click(addButton);
+    expect(
+      screen.getByText("Your input must be between 4 and 20 characters.")
+    ).toBeInTheDocument();
 
-  fireEvent.change(inputField, { target: { value: "New Task" } });
-  fireEvent.click(addButton);
+    // Submit a todo with fewer than 4 characters
+    fireEvent.change(screen.getByPlaceholderText("Enter Something"), {
+      target: { value: "abc" },
+    });
+    fireEvent.click(addButton);
+    expect(
+      screen.getByText("Your input must be between 4 and 20 characters.")
+    ).toBeInTheDocument();
 
-  expect(mockSetTodos).toHaveBeenCalledWith([
-    ...mockTodos,
-    { id: expect.any(String), title: "New Task", status: false },
-  ]);
-});
-
-it("clears input field after adding a todo", () => {
-  const mockSetTodos = jest.fn();
-  const mockTodos: TodoItem[] = [];
-
-  const inputFormProps: InputFormProps = {
-    todos: mockTodos,
-    setTodos: mockSetTodos,
-  };
-
-  render(<InputForm {...inputFormProps} />);
-  
-  const inputField = screen.getByPlaceholderText("Enter Something");
-  const addButton = screen.getByRole("button");
-
-  // Simulate entering a task and clicking the button
-  fireEvent.change(inputField, { target: { value: "New Task" } });
-  fireEvent.click(addButton);
-
-  // Assert that input field value is empty
-  expect(inputField).toHaveValue("");
-});
-
-it("displays an error message when adding an empty todo", () => {
-  const mockSetTodos = jest.fn();
-  const mockTodos: TodoItem[] = [];
-
-  const inputFormProps: InputFormProps = {
-    todos: mockTodos,
-    setTodos: mockSetTodos,
-  };
-
-  render(<InputForm {...inputFormProps} />);
-  
-  const addButton = screen.getByRole("button");
-
-  // Simulate clicking the button without entering a task
-  fireEvent.click(addButton);
-
-  // Assert that the error message is displayed
-  expect(screen.getByText("Please enter a valid todo.")).toBeInTheDocument();
+    // Submit a todo with more than 20 characters
+    fireEvent.change(screen.getByPlaceholderText("Enter Something"), {
+      target: { value: "This is a very long todo item." },
+    });
+    fireEvent.click(addButton);
+    expect(
+      screen.getByText("Your input must be between 4 and 20 characters.")
+    ).toBeInTheDocument();
+  });
 });

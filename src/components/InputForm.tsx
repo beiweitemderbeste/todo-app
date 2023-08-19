@@ -10,8 +10,13 @@ export default function InputForm({ todos, setTodos }: InputFormProps) {
   const [error, setError] = useState("");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTodoItem(event.target.value);
-    setError("");
+    const inputValue = event.target.value;
+    setTodoItem(inputValue);
+    if (inputValue.length < 4 || inputValue.length > 20) {
+      setError("length must be between 4 and 20 characters.");
+    } else {
+      setError("");
+    }
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -21,7 +26,7 @@ export default function InputForm({ todos, setTodos }: InputFormProps) {
 
   const addTodoItem = (todo: string) => {
     if (todo.trim() === "") {
-      setError("Please enter a valid todo.");
+      setError("Your input must be between 4 and 20 characters.");
     } else if (todoItem.length < 4 || todoItem.length > 20) {
       setError("Your input must be between 4 and 20 characters.");
     } else {
@@ -32,6 +37,7 @@ export default function InputForm({ todos, setTodos }: InputFormProps) {
       };
       setTodos([...todos, newTodo]);
       setTodoItem("");
+      setError("");
     }
   };
 
