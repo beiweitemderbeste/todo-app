@@ -22,18 +22,27 @@ describe("InputForm component", () => {
     expect(screen.getByRole("button")).toBeInTheDocument();
   });
 
-  it("adds a todo with non-empty input", () => {
+  it("adds a valid todo with non-empty input", () => {
     render(<InputForm {...inputFormProps} />);
+
     const inputField = screen.getByPlaceholderText("Enter Something");
     const addButton = screen.getByRole("button");
 
-    fireEvent.change(inputField, { target: { value: "New Task" } });
+    // Submit a valid todo
+    fireEvent.change(inputField, { target: { value: "Valid Task" } });
     fireEvent.click(addButton);
 
     expect(mockSetTodos).toHaveBeenCalledWith([
       ...mockTodos,
-      { id: expect.any(String), title: "New Task", status: false },
+      { id: expect.any(String), title: "Valid Task", status: false },
     ]);
+
+    // Ensure input field is cleared
+    expect(inputField).toHaveValue("");
+    // Ensure error message is not displayed
+    expect(
+      screen.queryByText("Your input must be between 4 and 20 characters.")
+    ).not.toBeInTheDocument();
   });
 
   it("clears input field after adding a todo", () => {
