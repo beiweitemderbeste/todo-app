@@ -22,6 +22,8 @@ export default function InputForm({ todos, setTodos }: InputFormProps) {
   const addTodoItem = (todo: string) => {
     if (todo.trim() === "") {
       setError("Please enter a valid todo.");
+    } else if (todoItem.length < 4 || todoItem.length > 20) {
+      setError("Your input must be between 4 and 20 characters.");
     } else {
       const newTodo: TodoItem = {
         id: uuidv4(),
