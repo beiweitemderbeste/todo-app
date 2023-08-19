@@ -2,21 +2,23 @@
 
 this will be a totally overengineered todo app to practice and implement different web development technologies.
 
+[live version @vercel](https://todo-app-beta-dusky.vercel.app/)
+
 ---
 
-used technologies:
+technologies in use:
 
 - [x] reactjs
 - [x] vitejs
 - [x] typescript
 - [x] git
 - [x] styled components
+- [x] vitest, jest, react-testing-library
 
 ---
 
 yet to implement:
 
-- [ ] tests - which tests exist? which to use? how to use them?
 - [ ] state management - zustand or redux?
 - [ ] styling - tailwindcss?materialui?chakraui?
 - [ ] which backend and why? supabase+react-router vs nextjs vs expressjs+postgresql/mongodb
