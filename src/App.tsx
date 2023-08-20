@@ -1,6 +1,6 @@
 import { useState } from "react";
-import styled from "styled-components";
 
+import MainHeading from "./components/MainHeading";
 import InputForm from "./components/InputForm";
 import TodoList from "./components/TodoList";
 
@@ -22,7 +22,7 @@ const App: React.FC = () => {
 
   return (
     <>
-      <StyledH1>React Todo App</StyledH1>
+      <MainHeading />
       <InputForm todos={todos} setTodos={setTodos} />
       <TodoList todos={todos} />
     </>
@@ -30,7 +30,3 @@ const App: React.FC = () => {
 }
 
 export default App;
-
-const StyledH1 = styled.h1`
-  font-family: monospace;
-`;
