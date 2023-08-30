@@ -14,4 +14,7 @@ export default defineConfig({
     css: true,
     setupFiles: "src/tests/setup.ts",
   },
+  build: {
+    outDir: "./client/dist",
+  },
 });
