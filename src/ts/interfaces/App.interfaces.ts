@@ -5,3 +5,9 @@ interface TodoItem {
 }
 
 export type { TodoItem };
+
+interface TodoListProps {
+  todos: TodoItem[];
+}
+
+export type { TodoListProps };

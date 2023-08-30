@@ -6,3 +6,4 @@ interface InputFormProps {
 }
 
 export type { InputFormProps };
+
