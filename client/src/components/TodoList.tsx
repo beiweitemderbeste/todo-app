@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 
 import { TodoListProps } from "../ts/interfaces/App.interfaces";
