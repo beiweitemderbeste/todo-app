@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 
 import MainHeading from "./components/MainHeading";
 import InputForm from "./components/InputForm";
@@ -28,6 +27,6 @@ const App: React.FC = () => {
       <TodoList todos={todos} />
     </>
   );
-}
+};
 
 export default App;

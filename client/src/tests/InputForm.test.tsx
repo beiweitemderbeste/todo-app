@@ -1,3 +1,4 @@
+import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import InputForm from "../components/InputForm";
 import jest from "jest-mock";
