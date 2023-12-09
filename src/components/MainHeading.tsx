@@ -1,3 +1,3 @@
 export default function MainHeading() {
-  return <h1>React Todo App</h1>;
+  return <h1 className="text-3xl font-bold underline text-sky-400">React Todo App</h1>;
 }
