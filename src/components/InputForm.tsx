@@ -1,5 +1,4 @@
 import { useState } from "react";
-import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 
 import { InputFormProps } from "../ts/interfaces/InputForm.interfaces";
@@ -43,47 +42,16 @@ export default function InputForm({ todos, setTodos }: InputFormProps) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <FormContainer>
-        <InputField
+      <div>
+        <input
           type="text"
           value={todoItem}
           onChange={handleChange}
           placeholder="Enter Something"
         />
-        <StyledButton type="submit">Add</StyledButton>
-        {error && <ErrorMessage>{error}</ErrorMessage>}
-      </FormContainer>
+        <button type="submit">Add</button>
+        {error && <span>{error}</span>}
+      </div>
     </form>
   );
 }
-
-const FormContainer = styled.div`
-  display: flex;
-  margin-bottom: 20px;
-`;
-
-const InputField = styled.input`
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px 0 0 4px;
-  outline: none;
-`;
-
-const StyledButton = styled.button`
-  padding: 8px 16px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 0 4px 4px 0;
-  cursor: pointer;
-`;
-
-const ErrorMessage = styled.span`
-  color: red;
-  font-size: 14px;
-  margin-top: 8px;
-  display: block;
-  background-color: #ffe0e0;
-  padding: 4px 8px;
-  border-radius: 4px;
-`;
