@@ -12,7 +12,7 @@ export default function InputForm({ todos, setTodos }: InputFormProps) {
     const inputValue = event.target.value;
     setTodoItem(inputValue);
     if (inputValue.length < 4 || inputValue.length > 20) {
-      setError("length must be between 4 and 20 characters.");
+      setError("Your input must be between 4 and 20 characters.");
     } else {
       setError("");
     }
@@ -51,8 +51,9 @@ export default function InputForm({ todos, setTodos }: InputFormProps) {
           className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
         />
         <button type="submit" className="flex-shrink-0 bg-indigo-500 hover:bg-indigo-700 border-indigo-500 hover:border-indigo-700 text-sm border-4 text-white py-1 px-2 rounded">Add</button>
-        {error && <span>{error}</span>}
+        
       </div>
+      {error && <span className="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">{error}</span>}
     </form>
   );
 }
