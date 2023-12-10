@@ -1,12 +1,12 @@
 import { useState } from "react";
 
-import MainHeading from "./components/MainHeading";
-import InputForm from "./components/InputForm";
-import TodoList from "./components/TodoList";
+import MainHeading from "../components/MainHeading";
+import InputForm from "../components/InputForm";
+import TodoList from "../components/TodoList";
 
-import { TodoItem } from "./ts/interfaces/App.interfaces";
+import { TodoItem } from "../ts/interfaces/App.interfaces";
 
-const App: React.FC = () => {
+const Home: React.FC = () => {
   const [todos, setTodos] = useState<TodoItem[]>([
     {
       id: "1",
@@ -29,4 +29,4 @@ const App: React.FC = () => {
   );
 }
 
-export default App;
+export default Home;
