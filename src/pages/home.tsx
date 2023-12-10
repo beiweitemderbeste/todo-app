@@ -21,12 +21,12 @@ const Home: React.FC = () => {
   ]);
 
   return (
-    <>
+    <div className="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden mt-16">
       <MainHeading />
       <InputForm todos={todos} setTodos={setTodos} />
       <TodoList todos={todos} />
-    </>
+    </div>
   );
-}
+};
 
 export default Home;

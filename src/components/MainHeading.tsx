@@ -1,3 +1,9 @@
 export default function MainHeading() {
-  return <h1 className="text-3xl font-bold underline text-sky-400">React Todo App</h1>;
+  return (
+    <div className="px-4 py-2">
+      <h1 className="text-indigo-600 font-bold text-2xl uppercase">
+        React Todo App
+      </h1>
+    </div>
+  );
 }
