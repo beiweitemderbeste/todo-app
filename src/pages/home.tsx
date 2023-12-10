@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import Navbar from "../components/Navbar";
 import MainHeading from "../components/MainHeading";
 import InputForm from "../components/InputForm";
 import TodoList from "../components/TodoList";
@@ -21,11 +22,14 @@ const Home: React.FC = () => {
   ]);
 
   return (
-    <div className="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden mt-16">
-      <MainHeading />
-      <InputForm todos={todos} setTodos={setTodos} />
-      <TodoList todos={todos} />
-    </div>
+    <>
+      <Navbar />
+      <div className="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden mt-16">
+        <MainHeading />
+        <InputForm todos={todos} setTodos={setTodos} />
+        <TodoList todos={todos} />
+      </div>
+    </>
   );
 };
 
