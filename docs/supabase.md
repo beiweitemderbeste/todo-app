@@ -12,6 +12,6 @@ CREATE TABLE todos (
 
 adding sample data:
 
-INSERT INTO todos (title) VALUES ("clean yard");
-INSERT INTO todos (title) VALUES ("trash");
-INSERT INTO todos (title) VALUES ("garden");
+INSERT INTO todos (title) VALUES ('clean yard');
+INSERT INTO todos (title) VALUES ('trash');
+INSERT INTO todos (title) VALUES ('garden');
