@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../../supabaseClient";
+import { Subscription } from "@supabase/supabase-js";
 
 import Navbar from "../components/Navbar";
 import InputForm from "../components/InputForm";
@@ -11,25 +12,24 @@ const Home: React.FC = () => {
   const [todos, setTodos] = useState<TodoItem[]>([]);
 
   useEffect(() => {
+    // Fetch initial data
+    getTodos();
+
     // Subscribe to real-time changes
-    const subscription = supabase
-      .from("todos")
-      .on("UPDATE", (payload) => {
+    const subscription = (supabase
+      .from("todos") as any)
+      .on("*", () => {
         // Handle real-time updates
-        console.log("Real-time update:", payload);
-        // Update your state or perform any other actions as needed
         getTodos();
       })
       .subscribe();
-
-    // Fetch initial data
-    getTodos();
 
     // Cleanup subscription when component unmounts
     return () => {
       subscription.unsubscribe();
     };
   }, []); // Run once on component mount
+
 
   async function getTodos() {
     try {
