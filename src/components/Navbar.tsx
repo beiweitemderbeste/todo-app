@@ -5,7 +5,7 @@ export default function Navbar() {
     <nav className="relative flex items-center justify-between sm:h-10 md:justify-center py-6 px-4 mt-2">
       <div className="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
         <div className="flex items-center justify-between w-full md:w-auto">
-          <h1 className="text-indigo-600 font-bold text-2xl uppercase">REACT TODO APP</h1>
+          <h1 className="text-indigo-600 font-bold text-2xl uppercase px-4">REACT TODO APP</h1>
           <div className="-mr-2 flex items-center md:hidden">
             <button
               type="button"
@@ -45,7 +45,7 @@ export default function Navbar() {
           ERROR
         </Link>
       </div>
-      <div className="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
+      <div className="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0 px-4">
         <span className="inline-flex">
           <Link
             to="/login"
