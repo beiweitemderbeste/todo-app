@@ -11,12 +11,38 @@ const Home: React.FC = () => {
   const [todos, setTodos] = useState<TodoItem[]>([]);
 
   useEffect(() => {
+    // Subscribe to real-time changes
+    const subscription = supabase
+      .from("todos")
+      .on("UPDATE", (payload) => {
+        // Handle real-time updates
+        console.log("Real-time update:", payload);
+        // Update your state or perform any other actions as needed
+        getTodos();
+      })
+      .subscribe();
+
+    // Fetch initial data
     getTodos();
-  }, []);
+
+    // Cleanup subscription when component unmounts
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []); // Run once on component mount
 
   async function getTodos() {
-    const { data } = await supabase.from("todos").select();
-    setTodos(data ?? []);
+    try {
+      const { data, error } = await supabase.from("todos").select();
+
+      if (error) {
+        throw error;
+      }
+
+      setTodos(data ?? []);
+    } catch (error) {
+      console.error("Error fetching todos:", error);
+    }
   }
 
   const handleCheckboxChange = (todoId: string) => {
@@ -29,25 +55,25 @@ const Home: React.FC = () => {
 
   async function deleteTodo(todoId: string) {
     try {
+      // Optimistic update: Remove the todo immediately from local state
+      setTodos((prevTodos) => prevTodos.filter((item) => item.id !== todoId));
+
       // Perform asynchronous delete logic using supabase
       const { error } = await supabase.from("todos").delete().eq("id", todoId);
-  
+
       if (error) {
-        throw new Error('Failed to delete todo');
+        throw new Error("Failed to delete todo");
       }
-  
-      // Handle success, e.g., update state or perform any additional actions
+
+      // Handle success, e.g., log or show a success message
       console.log(`Todo with ID ${todoId} deleted successfully`);
-  
-      // Update state after successful deletion
-      setTodos((prevTodos) => prevTodos.filter((item) => item.id !== todoId));
     } catch (error) {
       // Handle errors, e.g., display an error message or log the error
-      console.error('Error deleting todo:', error);
+      console.error("Error deleting todo:", error);
+      // If there's an error, you might want to revert the optimistic update
+      getTodos();
     }
   }
-  
-  
 
   return (
     <>
