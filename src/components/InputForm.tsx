@@ -18,7 +18,7 @@ export default function InputForm({ todos, setTodos }: InputFormProps) {
     return "";
   };
 
-  const saveTodos = async (newTodo: TodoItem) => {
+  const saveTodo = async (newTodo: TodoItem) => {
     try {
       const { data, error } = await supabase.from("todos").upsert([
         {
@@ -57,7 +57,7 @@ export default function InputForm({ todos, setTodos }: InputFormProps) {
       };
 
       // Save the new todo to the database
-      await saveTodos(newTodo);
+      await saveTodo(newTodo);
 
       // Update the local state with the new todo
       setTodos([...todos, newTodo]);
