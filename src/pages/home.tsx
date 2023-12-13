@@ -19,12 +19,20 @@ const Home: React.FC = () => {
     setTodos(data ?? []);
   }
 
+  const handleCheckboxChange = (todoId: string) => {
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) =>
+        todo.id === todoId ? { ...todo, status: !todo.status } : todo
+      )
+    );
+  };
+
   return (
     <>
       <Navbar />
       <div className="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden mt-16">
         <InputForm todos={todos} setTodos={setTodos} />
-        <TodoList todos={todos} />
+        <TodoList todos={todos} handleCheckboxChange={handleCheckboxChange} />
       </div>
     </>
   );

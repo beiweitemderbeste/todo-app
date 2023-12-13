@@ -8,6 +8,7 @@ export type { TodoItem };
 
 interface TodoListProps {
   todos: TodoItem[];
+  handleCheckboxChange: (todoId: string) => void;
 }
 
 export type { TodoListProps };
