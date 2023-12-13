@@ -12,7 +12,7 @@ technologies in use:
 - [x] vitejs
 - [x] typescript
 - [x] git
-- [x] <strike>styled components</strike>
+- [x] ~~styled components~~
 - [x] tailwindcss
 - [x] vitest, jest, react-testing-library
 
