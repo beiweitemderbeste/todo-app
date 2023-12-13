@@ -27,12 +27,38 @@ const Home: React.FC = () => {
     );
   };
 
+  async function deleteTodo(todoId: string) {
+    try {
+      // Perform asynchronous delete logic using supabase
+      const { error } = await supabase.from("todos").delete().eq("id", todoId);
+  
+      if (error) {
+        throw new Error('Failed to delete todo');
+      }
+  
+      // Handle success, e.g., update state or perform any additional actions
+      console.log(`Todo with ID ${todoId} deleted successfully`);
+  
+      // Update state after successful deletion
+      setTodos((prevTodos) => prevTodos.filter((item) => item.id !== todoId));
+    } catch (error) {
+      // Handle errors, e.g., display an error message or log the error
+      console.error('Error deleting todo:', error);
+    }
+  }
+  
+  
+
   return (
     <>
       <Navbar />
       <div className="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden mt-16">
         <InputForm todos={todos} setTodos={setTodos} />
-        <TodoList todos={todos} handleCheckboxChange={handleCheckboxChange} />
+        <TodoList
+          todos={todos}
+          handleCheckboxChange={handleCheckboxChange}
+          deleteTodo={deleteTodo}
+        />
       </div>
     </>
   );
