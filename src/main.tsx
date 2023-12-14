@@ -7,6 +7,7 @@ import Dashboard from "./pages/dashboard";
 import ErrorPage from "./pages/error";
 import Daily from "./pages/daily";
 import Backlog from "./pages/backlog";
+import Waiting from "./pages/waiting";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,11 @@ const router = createBrowserRouter([
   {
     path: "/backlog",
     element: <Backlog />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/waiting",
+    element: <Waiting />,
     errorElement: <ErrorPage />,
   },
   {

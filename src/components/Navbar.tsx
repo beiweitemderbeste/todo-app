@@ -52,6 +52,12 @@ export default function Navbar() {
         >
           BACKLOG
         </Link>
+        <Link
+          to="/waiting"
+          className="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out"
+        >
+          WAITING
+        </Link>
       </div>
       <div className="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0 px-4">
         <span className="inline-flex">
