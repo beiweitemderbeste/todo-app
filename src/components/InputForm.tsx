@@ -2,6 +2,8 @@ import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { supabase } from "../../supabaseClient";
 
+import InputFormButton from "./InputFormButton";
+
 import { InputFormProps } from "../ts/interfaces/InputForm.interfaces";
 import { TodoItem } from "../ts/interfaces/App.interfaces";
 
@@ -80,12 +82,7 @@ export default function InputForm({ todos, setTodos }: InputFormProps) {
           placeholder="Enter Something"
           className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
         />
-        <button
-          type="submit"
-          className="flex-shrink-0 bg-indigo-500 hover:bg-indigo-700 border-indigo-500 hover:border-indigo-700 text-sm border-4 text-white py-1 px-2 rounded"
-        >
-          Add
-        </button>
+        <InputFormButton handleSubmit={handleSubmit} />
       </div>
       {error && (
         <span className="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
