@@ -7,7 +7,7 @@ import TodoList from "../components/TodoList";
 
 import { TodoItem } from "../ts/interfaces/App.interfaces";
 
-const Home: React.FC = () => {
+const Dashboard: React.FC = () => {
   const [todos, setTodos] = useState<TodoItem[]>([]);
 
   useEffect(() => {
@@ -64,4 +64,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default Dashboard;

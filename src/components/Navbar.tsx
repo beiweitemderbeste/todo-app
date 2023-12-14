@@ -36,7 +36,7 @@ export default function Navbar() {
           to="/"
           className="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out"
         >
-          HOME
+          DASHBOARD
         </Link>
         <Link
           to="/error"
