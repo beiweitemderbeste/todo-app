@@ -58,6 +58,12 @@ export default function Navbar() {
         >
           WAITING
         </Link>
+        <Link
+          to="/clipboard"
+          className="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out"
+        >
+          CLIPBOARD
+        </Link>
       </div>
       <div className="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0 px-4">
         <span className="inline-flex">

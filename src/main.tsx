@@ -8,6 +8,7 @@ import ErrorPage from "./pages/error";
 import DailyPage from "./pages/daily";
 import BacklogPage from "./pages/backlog";
 import WaitingPage from "./pages/waiting";
+import ClipboardPage from "./pages/clipboard";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,11 @@ const router = createBrowserRouter([
   {
     path: "/waiting",
     element: <WaitingPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/clipboard",
+    element: <ClipboardPage />,
     errorElement: <ErrorPage />,
   },
   {
