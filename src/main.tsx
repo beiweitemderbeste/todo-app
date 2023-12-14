@@ -5,6 +5,7 @@ import "./index.css";
 
 import Dashboard from "./pages/dashboard";
 import ErrorPage from "./pages/error";
+import Daily from "./pages/daily";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,11 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <Dashboard />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/daily",
+    element: <Daily />,
     errorElement: <ErrorPage />,
   },
   {
