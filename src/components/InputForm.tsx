@@ -46,7 +46,7 @@ export default function InputForm({ todos, setTodos }: InputFormProps) {
     setError(validateInput(inputValue));
   };
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
     const inputError = validateInput(todoItem);
@@ -73,7 +73,7 @@ export default function InputForm({ todos, setTodos }: InputFormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-sm mx-auto px-4 py-2">
+    <form className="w-full max-w-sm mx-auto px-4 py-2">
       <div className="flex items-center border-b-2 border-indigo-500 py-2">
         <input
           type="text"
