@@ -5,7 +5,7 @@ import TodoListHeading from "./TodoListHeading";
 import TodoList from "./TodoList";
 import InputForm from "./InputForm";
 
-import { TodoItem } from "../ts/interfaces/App.interfaces";
+import type { TodoItem } from "../ts/interfaces/TodoItem.interface";
 
 export default function TodoListTable() {
   const [todos, setTodos] = useState<TodoItem[]>([]);

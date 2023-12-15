@@ -5,7 +5,7 @@ import { supabase } from "../../supabaseClient";
 import InputFormButton from "./InputFormButton";
 
 import { InputFormProps } from "../ts/interfaces/InputForm.interfaces";
-import { TodoItem } from "../ts/interfaces/App.interfaces";
+import { TodoItem } from "../ts/interfaces/TodoItem.interface";
 
 export default function InputForm({ todos, setTodos }: InputFormProps) {
   const [todoItem, setTodoItem] = useState("");

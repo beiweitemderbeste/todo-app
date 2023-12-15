@@ -1,4 +1,4 @@
-import { TodoItem } from "./App.interfaces";
+import { TodoItem } from "./TodoItem.interface";
 
 interface InputFormProps {
   todos: TodoItem[];

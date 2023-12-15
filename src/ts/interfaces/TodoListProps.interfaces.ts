@@ -1,10 +1,4 @@
-interface TodoItem {
-  id: string;
-  title: string;
-  status: boolean;
-}
-
-export type { TodoItem };
+import type { TodoItem } from "./TodoItem.interface";
 
 interface TodoListProps {
   todos: TodoItem[];

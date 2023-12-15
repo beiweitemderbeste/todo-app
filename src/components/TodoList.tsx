@@ -1,4 +1,4 @@
-import { TodoListProps } from "../ts/interfaces/App.interfaces";
+import { TodoListProps } from "../ts/interfaces/TodoListProps.interfaces";
 
 export default function TodoList({
   todos,
