@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { supabase } from "../../supabaseClient";
 
 import InputFormButton from "./InputFormButton";
+
+import { saveTodo } from "../utils/todo.helpers"
 
 import { InputFormProps } from "../ts/interfaces/InputForm.interfaces";
 import { TodoItem } from "../ts/interfaces/TodoItem.interface";
@@ -18,26 +19,6 @@ export default function InputForm({ todos, setTodos }: InputFormProps) {
       return "Your input must be between 4 and 20 characters.";
     }
     return "";
-  };
-
-  const saveTodo = async (newTodo: TodoItem) => {
-    try {
-      const { data, error } = await supabase.from("todos").upsert([
-        {
-          id: newTodo.id,
-          title: newTodo.title,
-          status: newTodo.status,
-        },
-      ]);
-
-      if (error instanceof Error) {
-        console.error("Error saving todo to database:", error.message);
-      } else {
-        console.log("Todo saved successfully to database:", data);
-      }
-    } catch (error) {
-      console.error("Error saving todo to database:", error);
-    }
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
