@@ -2,9 +2,16 @@ import { TodoListProps } from "../ts/interfaces/TodoListProps.interfaces";
 
 export default function TodoList({
   todos,
+  setTodos,
   handleCheckboxChange,
   deleteTodo,
 }: TodoListProps) {
+
+  const handleDelete = async (todoId: string) => {
+    deleteTodo(todoId);
+    setTodos((prevTodos) => prevTodos.filter((item) => item.id !== todoId));
+  };
+
   return (
     <>
       <ul className="divide-y divide-gray-200 px-4">
@@ -30,7 +37,7 @@ export default function TodoList({
               {todo.status && (
                 <button
                   className="ml-auto text-white bg-red-500 px-2 py-1 rounded"
-                  onClick={() => deleteTodo(todo.id)}
+                  onClick={() => handleDelete(todo.id)}
                 >
                   Delete
                 </button>
