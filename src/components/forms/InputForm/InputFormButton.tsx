@@ -1,4 +1,4 @@
-import { InputFormButtonProps } from "../ts/interfaces/InputFormButton.interfaces";
+import { InputFormButtonProps } from "../../../ts/interfaces/InputFormButton.interfaces";
 
 const InputFormButton = ({ handleSubmit }: InputFormButtonProps) => {
   return (

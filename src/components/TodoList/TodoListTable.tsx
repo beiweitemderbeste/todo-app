@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 
-import { deleteTodo, getTodos } from "../utils/todo.helpers";
+import { deleteTodo, getTodos } from "../../utils/todo.helpers";
 
 import TodoListHeading from "./TodoListHeading";
 import TodoList from "./TodoList";
-import InputForm from "./InputForm";
+import InputForm from "../forms/InputForm/InputForm";
 
-import type { TodoItem } from "../ts/interfaces/TodoItem.interface";
+import type { TodoItem } from "../../ts/interfaces/TodoItem.interface";
 
 export default function TodoListTable() {
   const [todos, setTodos] = useState<TodoItem[]>([]);

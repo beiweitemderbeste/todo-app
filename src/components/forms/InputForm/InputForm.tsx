@@ -3,10 +3,10 @@ import { v4 as uuidv4 } from "uuid";
 
 import InputFormButton from "./InputFormButton";
 
-import { saveTodo } from "../utils/todo.helpers"
+import { saveTodo } from "../../../utils/todo.helpers";
 
-import { InputFormProps } from "../ts/interfaces/InputForm.interfaces";
-import { TodoItem } from "../ts/interfaces/TodoItem.interface";
+import { InputFormProps } from "../../../ts/interfaces/InputForm.interfaces";
+import { TodoItem } from "../../../ts/interfaces/TodoItem.interface";
 
 export default function InputForm({ todos, setTodos }: InputFormProps) {
   const [todoItem, setTodoItem] = useState("");
