@@ -1,9 +1,7 @@
-
-import Navbar from "../components/Navbar";
+import Navbar from "../components/layout/navigation/Navbar/Navbar";
 import TodoListTable from "../components/TodoListTable";
 
 const Dashboard: React.FC = () => {
-
   return (
     <>
       <Navbar />
