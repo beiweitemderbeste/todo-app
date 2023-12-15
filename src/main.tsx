@@ -3,12 +3,12 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 
-import Dashboard from "./pages/dashboard";
-import ErrorPage from "./pages/error";
-import DailyPage from "./pages/daily";
-import BacklogPage from "./pages/backlog";
-import WaitingPage from "./pages/waiting";
-import ClipboardPage from "./pages/clipboard";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import ErrorPage from "./pages/Error/Error";
+import DailyPage from "./pages/Daily/Daily";
+import BacklogPage from "./pages/Backlog/Backlog";
+import WaitingPage from "./pages/Waiting/Waiting";
+import ClipboardPage from "./pages/Clipboard/Clipboard";
 
 const router = createBrowserRouter([
   {

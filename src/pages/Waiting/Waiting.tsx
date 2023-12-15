@@ -1,4 +1,4 @@
-import Navbar from "../components/layout/navigation/Navbar/Navbar";
+import Navbar from "../../components/layout/navigation/Navbar/Navbar";
 
 function Waiting() {
   return (
