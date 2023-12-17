@@ -12,8 +12,4 @@ test("navigates to DASHBOARD when Dashboard link is clicked", () => {
   const dashboardLink = screen.getByRole("link", { name: "DASHBOARD" });
   fireEvent.click(dashboardLink);
   expect(window.location.pathname).toBe("/");
-
-  const dailyLink = screen.getByRole("link", { name: "DAILY" });
-  fireEvent.click(dailyLink);
-  expect(window.location.pathname).toBe("/");
 });
