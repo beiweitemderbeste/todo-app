@@ -1,10 +1,11 @@
 import Navbar from "../../components/layout/navigation/Navbar/Navbar";
+import TodoListTable from "../../components/TodoList/TodoListTable";
 
 function Backlog() {
   return (
     <>
       <Navbar />
-      <h1>hello from backlog page</h1>
+      <TodoListTable tableHeading="backlog" />
     </>
   );
 }

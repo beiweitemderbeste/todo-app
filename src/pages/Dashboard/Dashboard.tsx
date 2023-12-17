@@ -1,11 +1,10 @@
 import Navbar from "../../components/layout/navigation/Navbar/Navbar";
-import TodoListTable from "../../components/TodoList/TodoListTable";
 
 const Dashboard: React.FC = () => {
   return (
     <>
       <Navbar />
-      <TodoListTable tableHeading="backlog" />
+      <h1>hello from dashboard page</h1>
     </>
   );
 };
