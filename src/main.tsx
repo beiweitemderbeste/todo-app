@@ -5,7 +5,7 @@ import "./index.css";
 
 import Dashboard from "./pages/Dashboard/Dashboard";
 import ErrorPage from "./pages/Error/Error";
-import DailyPage from "./pages/Daily/Daily";
+import ReTodoPage from "./pages/ReTodo/ReTodo";
 import BacklogPage from "./pages/Backlog/Backlog";
 import WaitingPage from "./pages/Waiting/Waiting";
 import ClipboardPage from "./pages/Clipboard/Clipboard";
@@ -22,8 +22,8 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/daily",
-    element: <DailyPage />,
+    path: "/retodo",
+    element: <ReTodoPage />,
     errorElement: <ErrorPage />,
   },
   {

@@ -41,10 +41,10 @@ export default function Navbar() {
           DASHBOARD
         </Link>
         <Link
-          to="/daily"
+          to="/retodo"
           className="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out"
         >
-          DAILY
+          RETODO
         </Link>
         <Link
           to="/backlog"
