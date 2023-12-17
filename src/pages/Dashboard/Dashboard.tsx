@@ -5,7 +5,7 @@ const Dashboard: React.FC = () => {
   return (
     <>
       <Navbar />
-      <TodoListTable />
+      <TodoListTable tableHeading="backlog" />
     </>
   );
 };

@@ -7,8 +7,9 @@ import TodoList from "./TodoList";
 import InputForm from "../forms/InputForm/InputForm";
 
 import type { TodoItem } from "../../ts/interfaces/TodoItem.interface";
+import type { TodoListHeadingProps } from "../../ts/interfaces/TodoListHeadingProps.interfaces";
 
-export default function TodoListTable() {
+export default function TodoListTable({ tableHeading }: TodoListHeadingProps) {
   const [todos, setTodos] = useState<TodoItem[]>([]);
 
   useEffect(() => {
@@ -30,7 +31,7 @@ export default function TodoListTable() {
 
   return (
     <div className="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden mt-16">
-      <TodoListHeading />
+      <TodoListHeading tableHeading={tableHeading} />
       <InputForm todos={todos} setTodos={setTodos} />
       <TodoList
         todos={todos}
