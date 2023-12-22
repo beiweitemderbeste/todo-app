@@ -1,22 +1,17 @@
 import { useState } from "react";
 
-export default function ReTodoList() {
-  const [dailyReTodos, setDailyReTodos] = useState([
-    { id: "1", title: "trash", status: true },
-    { id: "2", title: "plants", status: false },
-  ]);
+export default function ReTodoList({todos, setTodos}) {
 
-  const handleCheckboxChange = (retodo: string) => {
-    console.log(retodo);
-    setDailyReTodos((prevTodos) =>
+  const handleCheckboxChange = (todo: string) => {
+    setTodos((prevTodos) =>
       prevTodos.map((todo) =>
-        todo.id === retodo ? { ...todo, status: !todo.status } : todo
+        todo.id === todo ? { ...todo, status: !todo.status } : todo
       )
     );
   };
 
   const handleDelete = async (todoId: string) => {
-    setDailyReTodos((prevTodos) =>
+    setTodos((prevTodos) =>
       prevTodos.filter((item) => item.id !== todoId)
     );
   };
@@ -24,29 +19,29 @@ export default function ReTodoList() {
   return (
     <>
       <ul className="divide-y divide-gray-200 px-4">
-        {dailyReTodos.map((retodo) => (
-          <li className="py-4 flex justify-center h-14" key={retodo.id}>
+        {todos.map((todo) => (
+          <li className="py-4 flex justify-center h-14" key={todo.id}>
             <div className="flex items-center w-full">
               <input
-                id={retodo.id}
-                name={retodo.id}
+                id={todo.id}
+                name={todo.id}
                 type="checkbox"
-                checked={retodo.status}
+                checked={todo.status}
                 className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-                onChange={() => handleCheckboxChange(retodo.id)}
+                onChange={() => handleCheckboxChange(todo.id)}
               />
               <label
-                htmlFor={retodo.id}
+                htmlFor={todo.id}
                 className={`ml-3 block text-gray-900 ${
-                  retodo.status ? "line-through text-gray-500" : ""
+                  todo.status ? "line-through text-gray-500" : ""
                 }`}
               >
-                <span className="text-lg font-medium">{retodo.title}</span>
+                <span className="text-lg font-medium">{todo.title}</span>
               </label>
-              {retodo.status && (
+              {todo.status && (
                 <button
                   className="ml-auto text-white bg-red-500 px-2 py-1 rounded"
-                  onClick={() => handleDelete(retodo.id)}
+                  onClick={() => handleDelete(todo.id)}
                 >
                   Done
                 </button>
