@@ -5,8 +5,8 @@ import InputFormButton from "./InputFormButton";
 
 import { saveTodo } from "../../../utils/todo.helpers";
 
-import { InputFormProps } from "../../../ts/interfaces/InputForm.interfaces";
-import { TodoItem } from "../../../ts/interfaces/TodoItem.interface";
+import { InputFormProps } from "../../../ts/interfaces/InputForm/InputForm.interfaces";
+import { TodoItem } from "../../../ts/interfaces/TodoList/TodoItem.interface";
 
 export default function InputForm({ todos, setTodos }: InputFormProps) {
   const [todoItem, setTodoItem] = useState("");

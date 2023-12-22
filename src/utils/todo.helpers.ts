@@ -1,6 +1,6 @@
 import { supabase } from "../../supabaseClient";
 
-import { TodoItem } from "../ts/interfaces/TodoItem.interface";
+import { TodoItem } from "../ts/interfaces/TodoList/TodoItem.interface";
 
 export const getTodos = async () => {
   try {
@@ -41,9 +41,7 @@ export const deleteTodo = async (todoId: string) => {
     }
 
     console.log(`Todo with ID ${todoId} deleted successfully`);
-    
   } catch (error) {
     console.error("Error deleting todo:", error);
   }
-  
 };
