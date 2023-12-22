@@ -1,10 +1,11 @@
 import Navbar from "../../components/layout/navigation/Navbar/Navbar";
+import ReTodoListTable from "../../components/ReTodoList/ReTodoListtTable";
 
 function ReTodo() {
   return (
     <>
       <Navbar />
-      <h1>hello from retodo page</h1>
+      <ReTodoListTable />
     </>
   );
 }
