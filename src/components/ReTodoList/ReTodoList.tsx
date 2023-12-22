@@ -48,7 +48,7 @@ export default function ReTodoList() {
                   className="ml-auto text-white bg-red-500 px-2 py-1 rounded"
                   onClick={() => handleDelete(retodo.id)}
                 >
-                  Delete
+                  Done
                 </button>
               )}
             </div>
