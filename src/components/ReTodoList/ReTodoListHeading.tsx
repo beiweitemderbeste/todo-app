@@ -1,7 +1,9 @@
-export default function ReTodoListHeading() {
+import { ReTodoListHeadingProps } from "../../ts/interfaces/ReTodoListHeadingProps.interfaces";
+
+export default function ReTodoListHeading({tableHeading}: ReTodoListHeadingProps) {
   return (
-    <div className="p-4 bg-indigo-500 text-white">
-      <h2 className="text-2xl font-bold">Daily ReTodos</h2>
+    <div className="p-4 bg-indigo-500 text-white flex items-center justify-center">
+      <h2 className="text-2xl font-bold">{tableHeading}</h2>
     </div>
   );
 }
