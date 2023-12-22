@@ -3,9 +3,17 @@ import { TodoListProps } from "../../ts/interfaces/TodoList/TodoListProps.interf
 export default function TodoList({
   todos,
   setTodos,
-  handleCheckboxChange,
   deleteTodo,
 }: TodoListProps) {
+  
+  const handleCheckboxChange = (todoId: string) => {
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) =>
+        todo.id === todoId ? { ...todo, status: !todo.status } : todo
+      )
+    );
+  };
+
   const handleDelete = async (todoId: string) => {
     deleteTodo(todoId);
     setTodos((prevTodos) => prevTodos.filter((item) => item.id !== todoId));

@@ -1,6 +1,7 @@
 import { ReTodoListProps } from "../../ts/interfaces/ReTodoList/ReTodoListProps.interfaces";
 
 export default function ReTodoList({ todos, setTodos }: ReTodoListProps) {
+  
   const handleCheckboxChange = (todoId: string, e: React.ChangeEvent<HTMLInputElement>) => {
     setTodos((prevTodos) =>
       prevTodos.map((prevTodo) =>
