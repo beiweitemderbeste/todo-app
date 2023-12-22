@@ -1,17 +1,19 @@
+import React from "react";
+
 import ReTodoListHeading from "./ReTodoListHeading";
 import ReTodoList from "./ReTodoList";
 
-import type { ReTodoListHeadingProps } from "../../ts/interfaces/ReTodoList/ReTodoListHeadingProps.interfaces";
+import type { ReTodoListTableProps } from "../../ts/interfaces/ReTodoList/ReTodoListTableProps.interfaces";
 
-export default function ReTodoListTable({
-  tableHeading,
-  todos,
-  setTodos,
-}: ReTodoListHeadingProps) {
+const ReTodoListTable: React.FC<ReTodoListTableProps> = (props) => {
+  const { tableHeading, todos, setTodos } = props;
+
   return (
     <div className="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden mt-16">
       <ReTodoListHeading tableHeading={tableHeading} />
       <ReTodoList todos={todos} setTodos={setTodos} />
     </div>
   );
-}
+};
+
+export default ReTodoListTable;

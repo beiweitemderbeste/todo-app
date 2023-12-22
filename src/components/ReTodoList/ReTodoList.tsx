@@ -1,19 +1,16 @@
-import { useState } from "react";
+import { ReTodoListProps } from "../../ts/interfaces/ReTodoList/ReTodoListProps.interfaces";
 
-export default function ReTodoList({todos, setTodos}) {
-
-  const handleCheckboxChange = (todo: string) => {
+export default function ReTodoList({ todos, setTodos }: ReTodoListProps) {
+  const handleCheckboxChange = (todoId: string, e: React.ChangeEvent<HTMLInputElement>) => {
     setTodos((prevTodos) =>
-      prevTodos.map((todo) =>
-        todo.id === todo ? { ...todo, status: !todo.status } : todo
+      prevTodos.map((prevTodo) =>
+        prevTodo.id === todoId ? { ...prevTodo, status: e.target.checked } : prevTodo
       )
     );
   };
 
   const handleDelete = async (todoId: string) => {
-    setTodos((prevTodos) =>
-      prevTodos.filter((item) => item.id !== todoId)
-    );
+    setTodos((prevTodos) => prevTodos.filter((item) => item.id !== todoId));
   };
 
   return (
@@ -28,7 +25,7 @@ export default function ReTodoList({todos, setTodos}) {
                 type="checkbox"
                 checked={todo.status}
                 className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-                onChange={() => handleCheckboxChange(todo.id)}
+                onChange={(e) => handleCheckboxChange(todo.id, e)}
               />
               <label
                 htmlFor={todo.id}
