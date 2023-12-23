@@ -12,7 +12,7 @@ export const getBacklogTodos = async () => {
   }
 };
 
-export const saveTodo = async (newTodo: TodoItem) => {
+export const saveToBacklog = async (newTodo: TodoItem) => {
   try {
     const { data, error } = await supabase.from("backlog_todo").upsert([
       {
