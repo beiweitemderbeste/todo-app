@@ -45,3 +45,22 @@ export const deleteTodo = async (todoId: string) => {
     console.error("Error deleting todo:", error);
   }
 };
+
+export const handleCheckboxChange = (
+  todoId: string,
+  setTodos: React.Dispatch<React.SetStateAction<TodoItem[]>>
+) => {
+  setTodos((prevTodos) =>
+    prevTodos.map((todo) =>
+      todo.id === todoId ? { ...todo, status: !todo.status } : todo
+    )
+  );
+};
+
+export const handleDelete = async (
+  todoId: string,
+  setTodos: React.Dispatch<React.SetStateAction<TodoItem[]>>
+) => {
+  await deleteTodo(todoId);
+  setTodos((prevTodos) => prevTodos.filter((item) => item.id !== todoId));
+};

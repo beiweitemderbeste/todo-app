@@ -1,22 +1,8 @@
-import { deleteTodo } from "../../utils/todo.helpers";
+import { handleCheckboxChange, handleDelete } from "../../utils/todo.helpers";
 
 import { TodoListProps } from "../../ts/interfaces/TodoList/TodoListProps.interfaces";
 
 export default function TodoList({ todos, setTodos }: TodoListProps) {
-
-  const handleCheckboxChange = (todoId: string) => {
-    setTodos((prevTodos) =>
-      prevTodos.map((todo) =>
-        todo.id === todoId ? { ...todo, status: !todo.status } : todo
-      )
-    );
-  };
-
-  const handleDelete = async (todoId: string) => {
-    deleteTodo(todoId);
-    setTodos((prevTodos) => prevTodos.filter((item) => item.id !== todoId));
-  };
-
   return (
     <>
       <ul className="divide-y divide-gray-200 px-4">
@@ -29,7 +15,7 @@ export default function TodoList({ todos, setTodos }: TodoListProps) {
                 type="checkbox"
                 checked={todo.status}
                 className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-                onChange={() => handleCheckboxChange(todo.id)}
+                onChange={() => handleCheckboxChange(todo.id, setTodos)}
               />
               <label
                 htmlFor={todo.id}
@@ -42,7 +28,7 @@ export default function TodoList({ todos, setTodos }: TodoListProps) {
               {todo.status && (
                 <button
                   className="ml-auto text-white bg-red-500 px-2 py-1 rounded"
-                  onClick={() => handleDelete(todo.id)}
+                  onClick={() => handleDelete(todo.id, setTodos)}
                 >
                   Delete
                 </button>
