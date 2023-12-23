@@ -23,8 +23,8 @@ creating daily_todo table:
 CREATE TABLE daily_todo (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   title TEXT CHECK (LENGTH(title) >= 4 AND LENGTH(title) <= 20 AND title !~ '^\s*$'),
-  is_completed BOOLEAN DEFAULT false
-  updated_at TIMESTAMP DEFAULT current_timestamp;
+  is_completed BOOLEAN DEFAULT false,
+  updated_at TIMESTAMP DEFAULT current_timestamp
 );
 
 adding sample data:
