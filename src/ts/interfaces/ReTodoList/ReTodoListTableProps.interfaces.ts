@@ -5,6 +5,7 @@ interface ReTodoListTableProps {
   todos: TodoItem[];
   setTodos: React.Dispatch<React.SetStateAction<TodoItem[]>>;
   handleDelete: (todoId: string, setTodos: React.Dispatch<React.SetStateAction<TodoItem[]>>) => void; 
+  saveToDatabase: (newTodo: TodoItem) => Promise<void>; 
 }
 
 export type { ReTodoListTableProps };
