@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { getTodos } from "../../utils/todo.helpers";
+import { getBacklogTodos } from "../../utils/todo.helpers";
 
 import Navbar from "../../components/layout/navigation/Navbar/Navbar";
 import TodoListTable from "../../components/TodoList/TodoListTable";
@@ -12,7 +12,7 @@ function Backlog() {
 
   useEffect(() => {
     async function fetchData() {
-      const data = await getTodos();
+      const data = await getBacklogTodos();
       setTodos(data);
     }
 

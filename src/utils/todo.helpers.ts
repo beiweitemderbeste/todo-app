@@ -2,7 +2,7 @@ import { supabase } from "../../supabaseClient";
 
 import { TodoItem } from "../ts/interfaces/TodoList/TodoItem.interface";
 
-export const getTodos = async () => {
+export const getBacklogTodos = async () => {
   try {
     const { data } = await supabase.from("backlog_todo").select();
     return data ?? [];
