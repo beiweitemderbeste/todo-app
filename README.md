@@ -15,6 +15,8 @@ technologies in use:
 - [x] ~~styled components~~
 - [x] tailwindcss
 - [x] vitest, jest, react-testing-library
+- [x] react-router
+- [x] supabase database
 
 ---
 
