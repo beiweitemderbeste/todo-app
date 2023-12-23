@@ -4,6 +4,7 @@ interface ReTodoListTableProps {
   tableHeading: string;
   todos: TodoItem[];
   setTodos: React.Dispatch<React.SetStateAction<TodoItem[]>>;
+  handleDelete: (todoId: string, setTodos: React.Dispatch<React.SetStateAction<TodoItem[]>>) => void; 
 }
 
 export type { ReTodoListTableProps };

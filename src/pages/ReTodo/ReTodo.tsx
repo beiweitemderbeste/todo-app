@@ -4,6 +4,7 @@ import Navbar from "../../components/layout/navigation/Navbar/Navbar";
 import ReTodoListTable from "../../components/ReTodoList/ReTodoListTable";
 
 import type { TodoItem } from "../../ts/interfaces/TodoList/TodoItem.interface";
+import { handleDailyDelete } from "../../utils/retodos.helpers";
 
 function ReTodo() {
   const [dailyReTodos, setDailyReTodos] = useState<TodoItem[]>([
@@ -26,6 +27,7 @@ function ReTodo() {
         tableHeading="Daily"
         todos={dailyReTodos}
         setTodos={setDailyReTodos}
+        handleDelete={handleDailyDelete}
       />
       <ReTodoListTable
         tableHeading="Weekly"

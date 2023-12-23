@@ -1,11 +1,8 @@
-import {
-  handleCheckboxChange,
-  handleDailyDelete,
-} from "../../utils/retodos.helpers";
+import { handleCheckboxChange } from "../../utils/retodos.helpers";
 
 import { ReTodoListProps } from "../../ts/interfaces/ReTodoList/ReTodoListProps.interfaces";
 
-export default function ReTodoList({ todos, setTodos }: ReTodoListProps) {
+export default function ReTodoList({ todos, setTodos, handleDelete }: ReTodoListProps) {
   return (
     <>
       <ul className="divide-y divide-gray-200 px-4">
@@ -31,7 +28,7 @@ export default function ReTodoList({ todos, setTodos }: ReTodoListProps) {
               {todo.status && (
                 <button
                   className="ml-auto text-white bg-red-500 px-2 py-1 rounded"
-                  onClick={() => handleDailyDelete(todo.id, setTodos)}
+                  onClick={() => handleDelete(todo.id, setTodos)}
                 >
                   Done
                 </button>

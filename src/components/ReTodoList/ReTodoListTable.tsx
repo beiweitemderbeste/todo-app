@@ -11,7 +11,7 @@ const ReTodoListTable: React.FC<ReTodoListTableProps> = (props) => {
   return (
     <div className="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden mt-16">
       <ReTodoListHeading tableHeading={tableHeading} />
-      <ReTodoList todos={todos} setTodos={setTodos} />
+      <ReTodoList todos={todos} setTodos={setTodos} handleDelete={handleDelete} />
     </div>
   );
 };
