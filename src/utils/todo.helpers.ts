@@ -4,7 +4,7 @@ import { TodoItem } from "../ts/interfaces/TodoList/TodoItem.interface";
 
 export const getTodos = async () => {
   try {
-    const { data } = await supabase.from("todos").select();
+    const { data } = await supabase.from("backlog_todo").select();
     return data ?? [];
   } catch (error) {
     console.error("Error fetching todos:", error);
@@ -14,7 +14,7 @@ export const getTodos = async () => {
 
 export const saveTodo = async (newTodo: TodoItem) => {
   try {
-    const { data, error } = await supabase.from("todos").upsert([
+    const { data, error } = await supabase.from("backlog_todo").upsert([
       {
         id: newTodo.id,
         title: newTodo.title,
@@ -34,7 +34,7 @@ export const saveTodo = async (newTodo: TodoItem) => {
 
 export const deleteTodo = async (todoId: string) => {
   try {
-    const { error } = await supabase.from("todos").delete().eq("id", todoId);
+    const { error } = await supabase.from("backlog_todo").delete().eq("id", todoId);
 
     if (error) {
       throw new Error("Failed to delete todo");
