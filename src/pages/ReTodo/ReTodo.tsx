@@ -39,27 +39,37 @@ function ReTodo() {
   return (
     <>
       <Navbar />
-      <ReTodoListTable
-        tableHeading="Daily"
-        todos={dailyReTodos}
-        setTodos={setDailyReTodos}
-        handleDelete={handleDailyDelete}
-        saveToDatabase={saveToDailyTodos}
-      />
-      <ReTodoListTable
-        tableHeading="Weekly"
-        todos={weeklyReTodos}
-        setTodos={setWeeklyReTodos}
-        handleDelete={handleWeeklyDelete}
-        saveToDatabase={saveToWeeklyTodos}
-      />
-      <ReTodoListTable
-        tableHeading="Monthly"
-        todos={monthlyReTodos}
-        setTodos={setMonthlyReTodos}
-        handleDelete={handleMonthlyDelete}
-        saveToDatabase={saveToMonthlyTodos}
-      />
+      <div className="px-4 md:px-8 lg:px-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="mb-8 md:mb-0">
+            <ReTodoListTable
+              tableHeading="Daily"
+              todos={dailyReTodos}
+              setTodos={setDailyReTodos}
+              handleDelete={handleDailyDelete}
+              saveToDatabase={saveToDailyTodos}
+            />
+          </div>
+          <div className="mb-8 md:mb-0">
+            <ReTodoListTable
+              tableHeading="Weekly"
+              todos={weeklyReTodos}
+              setTodos={setWeeklyReTodos}
+              handleDelete={handleWeeklyDelete}
+              saveToDatabase={saveToWeeklyTodos}
+            />
+          </div>
+          <div className="mb-8 md:mb-0">
+            <ReTodoListTable
+              tableHeading="Monthly"
+              todos={monthlyReTodos}
+              setTodos={setMonthlyReTodos}
+              handleDelete={handleMonthlyDelete}
+              saveToDatabase={saveToMonthlyTodos}
+            />
+          </div>
+        </div>
+      </div>
     </>
   );
 }
