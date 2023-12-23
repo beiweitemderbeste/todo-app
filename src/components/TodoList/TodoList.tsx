@@ -1,11 +1,9 @@
+import { deleteTodo } from "../../utils/todo.helpers";
+
 import { TodoListProps } from "../../ts/interfaces/TodoList/TodoListProps.interfaces";
 
-export default function TodoList({
-  todos,
-  setTodos,
-  deleteTodo,
-}: TodoListProps) {
-  
+export default function TodoList({ todos, setTodos }: TodoListProps) {
+
   const handleCheckboxChange = (todoId: string) => {
     setTodos((prevTodos) =>
       prevTodos.map((todo) =>

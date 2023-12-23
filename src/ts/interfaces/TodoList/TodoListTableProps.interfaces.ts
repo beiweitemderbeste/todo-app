@@ -1,8 +1,9 @@
 import type { TodoItem } from "./TodoItem.interface";
 
-interface TodoListProps {
+interface TodoListTableProps {
+  tableHeading: string;
   todos: TodoItem[];
   setTodos: React.Dispatch<React.SetStateAction<TodoItem[]>>;
 }
 
-export type { TodoListProps };
+export type { TodoListTableProps };
