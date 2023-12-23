@@ -1,20 +1,9 @@
+import { handleCheckboxChange, handleDelete } from "../../utils/todo.helpers";
+
 import { ReTodoListProps } from "../../ts/interfaces/ReTodoList/ReTodoListProps.interfaces";
 
 export default function ReTodoList({ todos, setTodos }: ReTodoListProps) {
-  
-  const handleCheckboxChange = (todoId: string, e: React.ChangeEvent<HTMLInputElement>) => {
-    setTodos((prevTodos) =>
-      prevTodos.map((prevTodo) =>
-        prevTodo.id === todoId ? { ...prevTodo, status: e.target.checked } : prevTodo
-      )
-    );
-  };
-
-  const handleDelete = async (todoId: string) => {
-    setTodos((prevTodos) => prevTodos.filter((item) => item.id !== todoId));
-  };
-
-  return (
+    return (
     <>
       <ul className="divide-y divide-gray-200 px-4">
         {todos.map((todo) => (
@@ -26,7 +15,7 @@ export default function ReTodoList({ todos, setTodos }: ReTodoListProps) {
                 type="checkbox"
                 checked={todo.status}
                 className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-                onChange={(e) => handleCheckboxChange(todo.id, e)}
+                onChange={() => handleCheckboxChange(todo.id, setTodos)}
               />
               <label
                 htmlFor={todo.id}
@@ -39,7 +28,7 @@ export default function ReTodoList({ todos, setTodos }: ReTodoListProps) {
               {todo.status && (
                 <button
                   className="ml-auto text-white bg-red-500 px-2 py-1 rounded"
-                  onClick={() => handleDelete(todo.id)}
+                  onClick={() => handleDelete(todo.id, setTodos)}
                 >
                   Done
                 </button>
