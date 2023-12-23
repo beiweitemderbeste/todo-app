@@ -2,6 +2,19 @@ import { supabase } from "../../supabaseClient";
 
 import { TodoItem } from "../ts/interfaces/TodoList/TodoItem.interface";
 
+export const handleCheckboxChange = (
+  todoId: string,
+  setTodos: React.Dispatch<React.SetStateAction<TodoItem[]>>
+) => {
+  setTodos((prevTodos) =>
+    prevTodos.map((todo) =>
+      todo.id === todoId ? { ...todo, status: !todo.status } : todo
+    )
+  );
+};
+
+//////////////////////////////////////////////////////////////////////
+
 export const getDailyTodos = async () => {
   try {
     const { data } = await supabase.from("daily_todo").select();
@@ -34,7 +47,10 @@ export const saveToDailyTodos = async (newTodo: TodoItem) => {
 
 export const deleteDailyTodo = async (todoId: string) => {
   try {
-    const { error } = await supabase.from("daily_todo").delete().eq("id", todoId);
+    const { error } = await supabase
+      .from("daily_todo")
+      .delete()
+      .eq("id", todoId);
 
     if (error) {
       throw new Error("Failed to delete todo");
@@ -52,17 +68,6 @@ export const handleDailyDelete = async (
 ) => {
   await deleteDailyTodo(todoId);
   setTodos((prevTodos) => prevTodos.filter((item) => item.id !== todoId));
-};
-
-export const handleCheckboxChange = (
-  todoId: string,
-  setTodos: React.Dispatch<React.SetStateAction<TodoItem[]>>
-) => {
-  setTodos((prevTodos) =>
-    prevTodos.map((todo) =>
-      todo.id === todoId ? { ...todo, status: !todo.status } : todo
-    )
-  );
 };
 
 //////////////////////////////////////////////////////////////////////
@@ -99,7 +104,10 @@ export const saveToWeeklyTodos = async (newTodo: TodoItem) => {
 
 export const deleteWeeklyTodo = async (todoId: string) => {
   try {
-    const { error } = await supabase.from("weekly_todo").delete().eq("id", todoId);
+    const { error } = await supabase
+      .from("weekly_todo")
+      .delete()
+      .eq("id", todoId);
 
     if (error) {
       throw new Error("Failed to delete todo");
@@ -153,7 +161,10 @@ export const saveToMonthlyTodos = async (newTodo: TodoItem) => {
 
 export const deleteMonthlyTodo = async (todoId: string) => {
   try {
-    const { error } = await supabase.from("monthly_todo").delete().eq("id", todoId);
+    const { error } = await supabase
+      .from("monthly_todo")
+      .delete()
+      .eq("id", todoId);
 
     if (error) {
       throw new Error("Failed to delete todo");

@@ -1,24 +1,30 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Navbar from "../../components/layout/navigation/Navbar/Navbar";
 import ReTodoListTable from "../../components/ReTodoList/ReTodoListTable";
 
 import type { TodoItem } from "../../ts/interfaces/TodoList/TodoItem.interface";
-import { handleDailyDelete, handleWeeklyDelete, handleMonthlyDelete } from "../../utils/retodos.helpers";
+import { getDailyTodos, getWeeklyTodos, getMonthlyTodos, handleDailyDelete, handleWeeklyDelete, handleMonthlyDelete } from "../../utils/retodos.helpers";
 
 function ReTodo() {
-  const [dailyReTodos, setDailyReTodos] = useState<TodoItem[]>([
-    { id: "1", title: "remove trash", status: true },
-    { id: "2", title: "do dishes", status: false },
-  ]);
+  const [dailyReTodos, setDailyReTodos] = useState<TodoItem[]>([]);
+  const [weeklyReTodos, setWeeklyReTodos] = useState<TodoItem[]>([]);
+  const [monthlyReTodos, setMonthlyReTodos] = useState<TodoItem[]>([]);
 
-  const [weeklyReTodos, setWeeklyReTodos] = useState<TodoItem[]>([
-    { id: "1", title: "water plants", status: false },
-  ]);
+  useEffect(() => {
+    async function fetchData() {
+      const data = await getDailyTodos();
+      setDailyReTodos(data);
 
-  const [monthlyReTodos, setMonthlyReTodos] = useState<TodoItem[]>([
-    { id: "1", title: "pay bills", status: false },
-  ]);
+      const weeklyData = await getWeeklyTodos();
+      setWeeklyReTodos(weeklyData);
+
+      const monthlyData = await getMonthlyTodos();
+      setMonthlyReTodos(monthlyData);
+    }
+
+    fetchData();
+  }, []);
 
   return (
     <>
