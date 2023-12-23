@@ -3,12 +3,10 @@ import { v4 as uuidv4 } from "uuid";
 
 import InputFormButton from "./InputFormButton";
 
-import { saveToBacklog } from "../../../utils/backlog.helpers";
-
-import { InputFormProps } from "../../../ts/interfaces/InputForm/InputForm.interfaces";
+import { InputFormProps } from "../../../ts/interfaces/InputForm/InputFormProps.interfaces";
 import { TodoItem } from "../../../ts/interfaces/TodoList/TodoItem.interface";
 
-export default function InputForm({ todos, setTodos }: InputFormProps) {
+export default function InputForm({ todos, setTodos, saveToDatabase }: InputFormProps) {
   const [todoItem, setTodoItem] = useState("");
   const [error, setError] = useState("");
 
@@ -40,7 +38,7 @@ export default function InputForm({ todos, setTodos }: InputFormProps) {
       };
 
       // Save the new todo to the database
-      await saveToBacklog(newTodo);
+      await saveToDatabase(newTodo);
 
       // Update the local state with the new todo
       setTodos([...todos, newTodo]);

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { getBacklogTodos } from "../../utils/backlog.helpers";
+import { getBacklogTodos, saveToBacklog } from "../../utils/backlog.helpers";
 
 import Navbar from "../../components/layout/navigation/Navbar/Navbar";
 import TodoListTable from "../../components/TodoList/TodoListTable";
@@ -22,7 +22,7 @@ function Backlog() {
   return (
     <>
       <Navbar />
-      <TodoListTable tableHeading="backlog" todos={todos} setTodos={setTodos} />
+      <TodoListTable tableHeading="backlog" todos={todos} setTodos={setTodos} saveToDatabase={saveToBacklog} />
     </>
   );
 }
