@@ -1,4 +1,7 @@
-import { handleCheckboxChange, handleDelete } from "../../utils/todo.helpers";
+import {
+  handleCheckboxChange,
+  handleBacklogDelete,
+} from "../../utils/backlog.helpers";
 
 import { TodoListProps } from "../../ts/interfaces/TodoList/TodoListProps.interfaces";
 
@@ -28,7 +31,7 @@ export default function TodoList({ todos, setTodos }: TodoListProps) {
               {todo.status && (
                 <button
                   className="ml-auto text-white bg-red-500 px-2 py-1 rounded"
-                  onClick={() => handleDelete(todo.id, setTodos)}
+                  onClick={() => handleBacklogDelete(todo.id, setTodos)}
                 >
                   Delete
                 </button>

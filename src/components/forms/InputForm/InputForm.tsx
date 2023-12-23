@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 
 import InputFormButton from "./InputFormButton";
 
-import { saveToBacklog } from "../../../utils/todo.helpers";
+import { saveToBacklog } from "../../../utils/backlog.helpers";
 
 import { InputFormProps } from "../../../ts/interfaces/InputForm/InputForm.interfaces";
 import { TodoItem } from "../../../ts/interfaces/TodoList/TodoItem.interface";

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { getBacklogTodos } from "../../utils/todo.helpers";
+import { getBacklogTodos } from "../../utils/backlog.helpers";
 
 import Navbar from "../../components/layout/navigation/Navbar/Navbar";
 import TodoListTable from "../../components/TodoList/TodoListTable";

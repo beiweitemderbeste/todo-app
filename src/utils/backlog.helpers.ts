@@ -32,7 +32,7 @@ export const saveToBacklog = async (newTodo: TodoItem) => {
   }
 };
 
-export const deleteTodo = async (todoId: string) => {
+export const deleteBacklogTodo = async (todoId: string) => {
   try {
     const { error } = await supabase.from("backlog_todo").delete().eq("id", todoId);
 
@@ -46,6 +46,14 @@ export const deleteTodo = async (todoId: string) => {
   }
 };
 
+export const handleBacklogDelete = async (
+  todoId: string,
+  setTodos: React.Dispatch<React.SetStateAction<TodoItem[]>>
+) => {
+  await deleteBacklogTodo(todoId);
+  setTodos((prevTodos) => prevTodos.filter((item) => item.id !== todoId));
+};
+
 export const handleCheckboxChange = (
   todoId: string,
   setTodos: React.Dispatch<React.SetStateAction<TodoItem[]>>
@@ -55,12 +63,4 @@ export const handleCheckboxChange = (
       todo.id === todoId ? { ...todo, status: !todo.status } : todo
     )
   );
-};
-
-export const handleDelete = async (
-  todoId: string,
-  setTodos: React.Dispatch<React.SetStateAction<TodoItem[]>>
-) => {
-  await deleteTodo(todoId);
-  setTodos((prevTodos) => prevTodos.filter((item) => item.id !== todoId));
 };
