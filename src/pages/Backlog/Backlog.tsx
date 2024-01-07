@@ -38,7 +38,7 @@ function Backlog() {
 
   return (
     <>
-      <Navbar />
+      <Navbar session={session} />
       <TodoListTable
         tableHeading="backlog"
         todos={todos}

@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 
-export default function Navbar() {
+import type { NavbarProps } from "../../../../ts/interfaces/Navbar/NavbarProps";
+
+const Navbar: React.FC<NavbarProps> = ({ session }) => {
   return (
     <nav className="relative flex items-center justify-between sm:h-10 md:justify-center py-6 px-4 mt-2">
       <div className="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
@@ -85,4 +87,6 @@ export default function Navbar() {
       </div>
     </nav>
   );
-}
+};
+
+export default Navbar;
