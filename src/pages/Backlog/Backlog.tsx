@@ -34,7 +34,7 @@ function Backlog() {
     if (!session) {
       navigate("/login");
     }
-  }, []);
+  }, [navigate, session]);
 
   return (
     <>
