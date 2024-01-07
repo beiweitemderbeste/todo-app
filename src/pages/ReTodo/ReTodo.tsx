@@ -1,4 +1,7 @@
 import { useState, useEffect } from "react";
+import { supabase } from "../../../supabaseClient";
+import { Session } from "@supabase/supabase-js";
+import { useNavigate } from "react-router-dom";
 
 import Navbar from "../../components/layout/navigation/Navbar/Navbar";
 import ReTodoListTable from "../../components/ReTodoList/ReTodoListTable";
@@ -20,8 +23,18 @@ function ReTodo() {
   const [dailyReTodos, setDailyReTodos] = useState<TodoItem[]>([]);
   const [weeklyReTodos, setWeeklyReTodos] = useState<TodoItem[]>([]);
   const [monthlyReTodos, setMonthlyReTodos] = useState<TodoItem[]>([]);
+  const [session, setSession] = useState<Session | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+    });
+
+    supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+
     async function fetchData() {
       const data = await getDailyTodos();
       setDailyReTodos(data);
@@ -34,7 +47,12 @@ function ReTodo() {
     }
 
     fetchData();
-  }, []);
+
+    if (!session) {
+      navigate("/login");
+    }
+
+  }, [navigate, session]);
 
   return (
     <>
