@@ -1,8 +1,18 @@
 import { Link } from "react-router-dom";
 
+import LinkList from "../../../LinkList/LinkList";
+
 import type { NavbarProps } from "../../../../ts/interfaces/Navbar/NavbarProps";
 
 const Navbar: React.FC<NavbarProps> = ({ session }) => {
+  const links = [
+    { to: "/", label: "DASHBOARD" },
+    { to: "/retodo", label: "RETODO" },
+    { to: "/backlog", label: "BACKLOG" },
+    { to: "/waiting", label: "WAITING" },
+    { to: "/clipboard", label: "CLIPBOARD" },
+  ];
+
   return (
     <nav className="relative flex items-center justify-between sm:h-10 md:justify-center py-6 px-4 mt-2">
       <div className="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
@@ -35,38 +45,7 @@ const Navbar: React.FC<NavbarProps> = ({ session }) => {
           </div>
         </div>
       </div>
-      <div className="hidden md:flex md:space-x-10">
-        <Link
-          to="/"
-          className="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out"
-        >
-          DASHBOARD
-        </Link>
-        <Link
-          to="/retodo"
-          className="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out"
-        >
-          RETODO
-        </Link>
-        <Link
-          to="/backlog"
-          className="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out"
-        >
-          BACKLOG
-        </Link>
-        <Link
-          to="/waiting"
-          className="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out"
-        >
-          WAITING
-        </Link>
-        <Link
-          to="/clipboard"
-          className="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out"
-        >
-          CLIPBOARD
-        </Link>
-      </div>
+      <LinkList links={links} />
       <div className="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0 px-4">
         <span className="inline-flex">
           <Link
