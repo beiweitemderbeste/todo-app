@@ -1,4 +1,7 @@
 import { useState, useEffect } from "react";
+import { supabase } from "../../../supabaseClient";
+import { Session } from "@supabase/supabase-js";
+import { redirect } from "react-router-dom";
 
 import { getBacklogTodos, saveToBacklog } from "../../utils/backlog.helpers";
 
@@ -8,9 +11,18 @@ import TodoListTable from "../../components/TodoList/TodoListTable";
 import type { TodoItem } from "../../ts/interfaces/TodoList/TodoItem.interface";
 
 function Backlog() {
+  const [session, setSession] = useState<Session | null>(null);
   const [todos, setTodos] = useState<TodoItem[]>([]);
 
   useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+    });
+
+    supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+
     async function fetchData() {
       const data = await getBacklogTodos();
       setTodos(data);
@@ -19,12 +31,21 @@ function Backlog() {
     fetchData();
   }, []);
 
-  return (
-    <>
-      <Navbar />
-      <TodoListTable tableHeading="backlog" todos={todos} setTodos={setTodos} saveToDatabase={saveToBacklog} />
-    </>
-  );
+  if (!session) {
+    return redirect("/login");
+  } else {
+    return (
+      <>
+        <Navbar />
+        <TodoListTable
+          tableHeading="backlog"
+          todos={todos}
+          setTodos={setTodos}
+          saveToDatabase={saveToBacklog}
+        />
+      </>
+    );
+  }
 }
 
 export default Backlog;
