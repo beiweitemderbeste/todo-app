@@ -1,6 +1,7 @@
 import LinkList from "../../../LinkList/LinkList";
 import BrandLogo from "../../../BrandLogo/BrandLogo";
 import SigningButtons from "../../../SigningButtons/SigningButtons";
+import LogoutButton from "../../../LogoutButton/LogoutButton";
 
 import type { NavbarProps } from "../../../../ts/interfaces/Navbar/NavbarProps";
 
