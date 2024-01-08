@@ -1,11 +1,14 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
-interface LinkListProps {
-  links: { to: string; label: string }[];
-}
+const LinkList = () => {
+  const links = [
+    { to: "/", label: "DASHBOARD" },
+    { to: "/retodo", label: "RETODO" },
+    { to: "/backlog", label: "BACKLOG" },
+    { to: "/waiting", label: "WAITING" },
+    { to: "/clipboard", label: "CLIPBOARD" },
+  ];
 
-const LinkList: React.FC<LinkListProps> = ({ links }) => {
   return (
     <div className="hidden md:flex md:space-x-10">
       {links.map((link) => (
